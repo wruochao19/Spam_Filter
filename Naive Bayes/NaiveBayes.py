@@ -70,11 +70,11 @@ def setOfwordsToVoc(vocableList, inputList):
 
 def setOfwordslistToVoc(vocableList, wordsList):
     """
-    Desc:
-    :param vocableList:
-    :param wordsList:
-    :return:
-    """
+        Desc: mark a matrix of vocableList with tag that is sum of occurrences of words
+        :param vocableList:
+        :param wordsList:
+        :return: a matrix of occurrences of words in vocableList
+        """
     setOfwordList = []
     for i in range(len(wordsList)):
         setOfword = setOfwordsToVoc(vocableList, wordsList[i])
@@ -84,10 +84,10 @@ def setOfwordslistToVoc(vocableList, wordsList):
 
 def trainNB(trainMatrix, trainCategory):
     """
-    Desc:
-    :param trainMatrix:
-    :param trainCategory:
-    :return:
+    Desc: calculate probability of spam, probability that words will appear in the spam and ham
+    :param trainMatrix: marked matrix of occurences of words.
+    :param trainCategory:  category of email as spam and ham
+    :return: probability
     """
     numOfmails = len(trainMatrix)
     numOfwords = len(trainMatrix[0])
