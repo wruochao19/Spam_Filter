@@ -5,8 +5,9 @@ you can check they in ``spam.cvs`` file.
 # Naive Bayes
 In machine learning, naive Bayes classifiers are a family of simple "probabilistic classifiers" based on applying Bayes' theorem with strong (naive) independence assumptions between the features.
 Abstractly, naive Bayes is a conditional probability model: given a problem instance to be classified, represented by a vector 
-x = ( x 1 , … , x n ) {\displaystyle \mathbf {x} =(x_{1},\dots ,x_{n})} 
-representing some n features (independent variables), it assigns to this instance probabilities 
+![Aaron Swartz](https://github.com/wruochao19/Hello-world/raw/master/1.png)
+ representing some n features (independent variables), it assigns to this instance probabilities 
+P(C|x) =
  
  
 **result**:
