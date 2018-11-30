@@ -13,7 +13,7 @@ from sklearn.metrics import classification_report
 
 def spam_filter():
     # prepare data
-    data = pd.read_csv("/Users/yangli/Desktop/spam.csv", header=0, encoding="ISO-8859-1")
+    data = pd.read_csv("../spam.csv", header=0, encoding="ISO-8859-1")
     data.head()
     #
     tfidf_vect = TfidfVectorizer()
@@ -48,6 +48,32 @@ def spam_filter():
     print("f-score: ", fscore)
     print("support: ", support)
     print(classification_report(y_test, predicted, target_names=labels))
+    return tfidf_vect, clf
+
+def predect_new(tfidf_vect, clf, text):
+    labels = ['ham', 'spam']
+    new_text_tfidf = tfidf_vect.transform(text)
+    print(new_text_tfidf)
+    print(new_text_tfidf.shape)
+    predicted_p = clf.predict_proba(new_text_tfidf)
+    predicted = clf.predict(new_text_tfidf)
+    for idx, doc in enumerate(text):
+        print('\n', doc)
+        for j, label in enumerate(labels):
+            print('% s: %.3f' % (labels[j], predicted_p[idx][j]))
+        print('%r => %s' % (doc, predicted[idx]))
 
 if __name__ == '__main__':
-    spam_filter()
+    """
+        generate tfidf matrix and a NB model
+    """
+    tfidf_vect, clf = spam_filter()
+
+    """
+        input : list of email text
+    """
+    text = ["Free entry in 2 a wkly comp to win FA Cup final tkts 21st May 2005. Text FA to 87121 to receive entry question(std txt rate)T&C's apply 08452810075over18's", "U dun say so early hor... U c already then say..."]
+    """
+        output: 
+    """
+    predect_new(tfidf_vect, clf, text)
