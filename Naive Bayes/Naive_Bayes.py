@@ -8,11 +8,10 @@ import re
 
 
 def text_segment(large_string):
-
     """
-    Desc: Receive a large string and segment it to a string list
-    :param large_string:
-    :return: String list and turn all string into lower case
+     Desc: Receive a large string and segment it to a string list
+     :param large_string:
+     :return: String list and turn all string into lower case
     """
     clean_string = re.compile(r'[^a-zA-z]|\d')
     list_string = clean_string.split(large_string)
@@ -22,17 +21,17 @@ def text_segment(large_string):
 
 def loadData(filename):
     """
-    Desc: Load date from scv file
-    :param filename:
-    :return: A list marked whether each mail is spam using 1 or 0. And a list contains content of these mails
+     Desc: Load date from csv file
+     :param filename:
+     :return: A list marked whether each mail is spam using 1 or 0. And a list contains content of these mails
     """
     category = []
-    textWords= []
+    textWords = []
     import csv
     with open(filename) as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
-            #print(row['v1'])
+            # print(row['v1'])
             if row['v1'] == 'ham':
                 category.append(0)
             elif row['v1'] == 'spam':
@@ -44,9 +43,9 @@ def loadData(filename):
 
 def creat_vocable_list(textWords):
     """
-    Desc: obtain the set of all words
-    :param dataset:
-    :return: vocable_list(no repetition)
+     Desc: obtain the set of all words
+     :param dataset:
+     :return: vocable_list(no repetition)
     """
     vocable_set = set([])
     for document in textWords:
@@ -57,10 +56,10 @@ def creat_vocable_list(textWords):
 
 def wordsFecOfVoc(vocableList, inputList):
     """
-    Desc: find out whether the words in inputList appear in vocable list
-    :param vocableList:
-    :param inputList:
-    :return: the resList, if one word is appeared the corresponding index of the word in resList is 1, else is 0
+     Desc: find out whether the words in inputList appear in vocable list
+     :param vocableList:
+     :param inputList:
+     :return: the resList, if one word is appeared the corresponding index of the word in resList is 1, else is 0
     """
     resList = [0] * len(vocableList)
     for word in inputList:
@@ -71,14 +70,14 @@ def wordsFecOfVoc(vocableList, inputList):
 
 def wordsFecListOfVoc(vocableList, wordsList):
     """
-    Desc:
-    :param vocableList:
-    :param wordsList:
-    :return:
+     Desc: mark a matrix of vocableList with tag that is sum of occurrences of words
+     :param vocableList:
+     :param wordsList:
+     :return: a matrix of occurrences of words in vocableList
     """
     setOfwordList = []
     for i in range(len(wordsList)):
-        #print(i)
+        # print(i)
         setOfword = wordsFecOfVoc(vocableList, wordsList[i])
         setOfwordList.append(setOfword)
     return setOfwordList
@@ -86,17 +85,17 @@ def wordsFecListOfVoc(vocableList, wordsList):
 
 def trainNB(trainMatrix, trainCategory):
     """
-    Desc:
-    :param trainMatrix:
-    :param trainCategory:
-    :return:
-    """
+     Desc: calculate probability of spam, probability that words will appear in the spam and ham
+     :param trainMatrix: marked matrix of occurences of words.
+     :param trainCategory:  category of email as spam and ham
+     :return: probability
+     """
     numOfmails = len(trainMatrix)
     numOfwords = len(trainMatrix[0])
-    #P(s)
+    # P(s)
     print(sum(trainCategory))
     print(numOfmails)
-    Pspam = sum(trainCategory)/float(numOfmails)
+    Pspam = sum(trainCategory) / float(numOfmails)
     # initial each word as 1 in mails
     WordsFecOfSpam = np.ones(numOfwords)
     WordsFecOfHam = np.ones(numOfwords)
@@ -109,19 +108,19 @@ def trainNB(trainMatrix, trainCategory):
         else:
             WordsFecOfHam += trainMatrix[i]
             numWordsInHam += sum(trainMatrix[i])
-    PwordsOfSpam = np.log(WordsFecOfSpam/numWordsInSpam)
-    PwordsOfHam = np.log(WordsFecOfHam/numWordsInHam)
+    PwordsOfSpam = np.log(WordsFecOfSpam / numWordsInSpam)
+    PwordsOfHam = np.log(WordsFecOfHam / numWordsInHam)
     return PwordsOfSpam, PwordsOfHam, Pspam
 
 
 def classify(VocableList, PwordsOfSpam, PwordsOFham, Pspam, target_wrods):
     """
-    :param VocableList:
-    :param PwordsOfSpam:
-    :param PwordsOFham:
-    :param Pspam:
-    :param target_wrods:
-    :return:
+     :param VocableList:
+     :param PwordsOfSpam:
+     :param PwordsOFham:
+     :param Pspam:
+     :param target_wrods:
+     :return:
     """
     PwordsOfSpam = PwordsOfSpam[1:]
     PwordsOFham = PwordsOFham[1:]
@@ -141,7 +140,7 @@ def getVocableList(file_name):
     fw = open(file_name)
     vocableList = fw.readline().strip().split('\t')
     fw.close()
-    return  vocableList
+    return vocableList
 
 
 def getTrainInfo():
@@ -152,5 +151,3 @@ def getTrainInfo():
     pSpam = float(fr.readline().strip())
     fr.close()
     return vocableList, pWordsOfSpam, pWordsOfHam, pSpam
-
-
