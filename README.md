@@ -37,6 +37,6 @@ The problem with the above formulation is that if the number of features n is la
 
  * Using 5574 traing spam. Classfiying 1000 mails,By our own implementation the average error rate is 0.9% 
 -----------------
-**sklearn**
+**Sklearn**
  
  * while the sklearn gets a 0.5% averagely error rate.
