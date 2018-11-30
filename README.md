@@ -17,9 +17,15 @@ The problem with the above formulation is that if the number of features n is la
 
 **project tree**
 ----------------
-* Naive_Bayes.py ``collect feature and lable, and classify email.``
-* train.py ``using dataset to train classify moudle.``
-* test.py ``classify a give number of mails and output the error rate``
+**Naive_Bayes**
+ * Naive_Bayes.py ``collect feature and lable, and classify email.``
+ * train.py ``using dataset to train classify moudle.``
+ * test.py ``classify a give number of mails and output the error rate``
+----------------
+**Dependency List**
+ * numpy
+ * panda
+ * re
 ----------------
 # result:
 Using 5574 traing spam. Classfiying 1000 mails, the average error rate is 0.9%
