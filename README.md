@@ -21,6 +21,7 @@ The problem with the above formulation is that if the number of features n is la
  * Naive_Bayes.py ``collect feature and lable, and classify email.``
  * train.py ``using dataset to train classify moudle.``
  * test.py ``classify a give number of mails and output the error rate``
+
 **sk_leaern_based**
  * sk_learn_based.py ``import sklearn library to split data, train model, evaluate, filter new``
 ----------------
@@ -33,8 +34,9 @@ The problem with the above formulation is that if the number of features n is la
 # result:
 
 **Simple Naive Bayes**
------------------
+
  * Using 5574 traing spam. Classfiying 1000 mails,By our own implementation the average error rate is 0.9% 
 -----------------
 **sklearn**
+ 
  * while the sklearn gets a 0.5% averagely error rate.
