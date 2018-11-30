@@ -3,7 +3,7 @@ This project is a spam filter module with Machine Learning based on Python using
 
 This Spam filter use dataset from kaggle to train and test. the dataset contains 5573 email, among them 13% is spam and rest of them is healthy.
 
-you can check they in ``spam.csv`` file.
+We do two parts,the first part implements Navie Bayes algorithm by our own code. Second part uses third part library sklearn to do spam filter.
 # Naive Bayes
 In machine learning, naive Bayes classifiers are a family of simple "probabilistic classifiers" based on applying Bayes' theorem with strong (naive) independence assumptions between the features.
 Abstractly, naive Bayes is a conditional probability model: given a problem instance to be classified, represented by a vector 
@@ -21,11 +21,13 @@ The problem with the above formulation is that if the number of features n is la
  * Naive_Bayes.py ``collect feature and lable, and classify email.``
  * train.py ``using dataset to train classify moudle.``
  * test.py ``classify a give number of mails and output the error rate``
+ * sk_learn_based ``import sklearn library to split data, train model, evaluate, filter new``
 ----------------
 **Dependency List**
  * numpy
  * panda
  * re
+ * sklearn
 ----------------
 # result:
-Using 5574 traing spam. Classfiying 1000 mails, the average error rate is 0.9%
+Using 5574 traing spam. Classfiying 1000 mails,By our own implementation the average error rate is 0.9% while the sklearn gets a 0.5% averagely error rate.
