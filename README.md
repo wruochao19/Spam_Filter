@@ -21,11 +21,13 @@ The problem with the above formulation is that if the number of features n is la
  * Naive_Bayes.py ``collect feature and lable, and classify email.``
  * train.py ``using dataset to train classify moudle.``
  * test.py ``classify a give number of mails and output the error rate``
+ * sk_learn_based ``import sklearn library to split data, train model, evaluate, filter new``
 ----------------
 **Dependency List**
  * numpy
  * panda
  * re
+ * sklearn
 ----------------
 # result:
 Using 5574 traing spam. Classfiying 1000 mails, the average error rate is 0.9%
